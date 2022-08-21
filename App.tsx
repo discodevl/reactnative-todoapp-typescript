@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { useContext } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import NewTodo from "./components/NewTodo";
+import Todos from "./components/Todos";
+import TodoContextProvider, { TodosContext } from "./store/todo-context";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <TodoContextProvider>
       <StatusBar style="auto" />
-    </View>
+      <View style={styles.container}>
+        <View>
+          <NewTodo />
+        </View>
+        <View>
+          <Todos />
+        </View>
+      </View>
+    </TodoContextProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flexDirection: "column",
+    marginTop: 24,
+    marginHorizontal: 26,
   },
 });
